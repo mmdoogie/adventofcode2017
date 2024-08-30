@@ -25,10 +25,8 @@ def part1(output = True):
     marks, _, _ = apply_lens(list(range(LOOP_SIZE)), lens)
     return marks[0] * marks[1]
 
-def part2(output = True):
-    del output
-
-    lens = [ord(x) for x in dat[0]] + [17,31,73,47,23]
+def knot_hash(txt):
+    lens = [ord(x) for x in txt] + [17,31,73,47,23]
 
     marks = list(range(LOOP_SIZE))
     pos = 0
@@ -43,6 +41,11 @@ def part2(output = True):
         results += [reduce(xor, sub_list)]
 
     return ''.join(f'{x:02x}' for x in results)
+
+def part2(output = True):
+    del output
+
+    return knot_hash(dat[0])
 
 if __name__ == '__main__':
     print('Part 1:', part1(True))

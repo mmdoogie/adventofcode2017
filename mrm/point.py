@@ -36,11 +36,12 @@ def point_sub(pt1, pt2):
 def point_neg(pt):
     return tuple(-p for p in pt)
 
-def grid_as_dict(grid):
+def grid_as_dict(grid, valid = lambda x: True):
     res = {}
     for y, g in enumerate(grid):
         for x, c in enumerate(g):
-            res[(x, y)] = c
+            if valid(c):
+                res[(x, y)] = c
     return res
 
 def polygon_area(pts):
